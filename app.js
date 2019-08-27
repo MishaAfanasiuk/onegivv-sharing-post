@@ -45,18 +45,23 @@ const app = express();
 
 const port = process.env.PORT || 3001;
 
+app.use(express.static('public'));
+
 app.get('/', function (req, res) {
-  res.send(`
+  res.set('Content-Type', 'text/html');
+  res.send(new Buffer(`
     <!DOCTYPE html>
-      <html>
+      <html lang="en" prefix="og: http://ogp.me/ns#">
        <head>
-         <title>!DOCTYPE</title>
+         <title>ONE GIVV</title>
          <meta charset="utf-8">
-         <meta property="og:url" content="https://0ec6a49e.ngrok.io/">
-         <meta property="og:title" content="One givv">
-         <meta property="og:type" content="article">
-         <meta property="og:description" content="123123">
-         <meta property="og:image" content="https://onebenefactor-image-bucket-staging.s3.amazonaws.com/aae2a5fd05538ae3d67b75f687f85bb4.jpg">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <meta name="og:title" content="One givv">
+         <meta name="og:type" content="article">
+         <meta name="og:description" content="123123">
+         <meta name="og:image" content="https://onebenefactor-image-bucket-staging.s3.amazonaws.com/aae2a5fd05538ae3d67b75f687f85bb4.jpg">
+         <meta name="og:url" content="https://0ec6a49e.ngrok.io/">
+         <meta name="fb:app_id" content="2315238045393232">
        </head>
        <body>
         <p>Разум — это Будда, а прекращение умозрительного мышления — это путь. 
@@ -66,8 +71,9 @@ app.get('/', function (req, res) {
         что Будда — это сущность разума, 
         и что разум подобен бесконечности.</p>
        </body> 
+       <noscript>You need to enable JavaScript to run this app.</noscript>
       </html>
-  `);
+  `));
 });
 
 app.listen(port, function () {
