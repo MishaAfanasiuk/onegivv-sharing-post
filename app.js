@@ -80,6 +80,9 @@ app.get('/', function (req, res) {
         и что разум подобен бесконечности.</p>
        </body> 
        <noscript>You need to enable JavaScript to run this app.</noscript>
+       <script>
+        window.location.href = 'https://google.com'
+        </script>
       </html>
   `));
 });
